@@ -1,0 +1,18 @@
+{
+  "group/quicklinks": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/browser",
+      "custom/filemanager",
+      "custom/vscode",
+      "custom/v2ray",
+      "custom/telegram"
+    ]
+  },
+  
+  "custom/browser": { "format": "", "on-click": "firefox", "tooltip-format": "Firefox" },
+  "custom/filemanager": { "format": "󰉋", "on-click": "dolphin", "tooltip-format": "Dolphin" },
+  "custom/vscode": { "format": "󰨞", "on-click": "code", "tooltip-format": "VS Code" },
+  "custom/v2ray": { "format": "󱚽", "on-click": "v2rayN", "tooltip-format": "v2rayN" },
+  "custom/telegram": { "format": "", "on-click": "Telegram", "tooltip-format": "Telegram" }
+}

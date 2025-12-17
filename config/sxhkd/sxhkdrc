@@ -1,0 +1,4 @@
+super+shift+d
+    rofi -show run
+super + v
+    copyq toggle

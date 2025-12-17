@@ -1,0 +1,92 @@
+{
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{class}",
+    "separate-outputs": true,
+    "max-length": 20
+  },
+
+  "custom/appmenu": {
+    "format": "󰣇",
+    "on-click": "rofi -show drun -replace",
+    "tooltip": false
+  },
+
+  "custom/exit": {
+    "format": "",
+    "on-click": "exec hyprshutdown",
+    "tooltip": false
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󱅫",
+      "dnd-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "escape": true
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+
+  "custom/tray-icon": {
+    "format": "󱊖", 
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "format-alt": "󰥔 {:%A, %B %d, %Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#cba6f7'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks": "<span color='#94e2d5'><b>W{}</b></span>",
+        "weekdays": "<span color='#fab387'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+
+  "hyprland/language": {
+    "format": " {short}",
+    "format-en": "EN",
+    "format-fa": "FA"
+  },
+
+  "network": {
+    "interval": 2,
+    "format-wifi": " {bandwidthDownBytes} 󰇚 {bandwidthUpBytes} 󰕒",
+    "format-ethernet": "󰈀 {bandwidthDownBytes} 󰇚 {bandwidthUpBytes} 󰕒",
+    "format-disconnected": "󰲛",
+    "on-click": "nm-connection-editor"
+  }
+}

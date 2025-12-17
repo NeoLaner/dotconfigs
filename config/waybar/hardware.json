@@ -1,0 +1,19 @@
+{
+  "cpu": {
+    "format": " {usage}%" 
+  },
+  "memory": {
+    "format": " {}%"    
+  },
+  "disk": {
+    "format": "󰋊 {percentage_used}%" 
+  },
+  "temperature": {
+    "format": "{icon} {temperatureC}°C" 
+  },
+
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": ["cpu", "memory", "disk", "temperature"] 
+  }
+}

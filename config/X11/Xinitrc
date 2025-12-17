@@ -1,0 +1,18 @@
+# ~/.xinitrc
+
+# Start the Polkit authentication agent
+/usr/bin/lxpolkit &
+
+# --- THIS IS THE BROKEN PART, WE ARE DISABLING IT ---
+eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+# Tell DBus/Systemd about these variables
+# This allows apps started via Rofi/Dmenu/VSCode to actually SEE the keyring
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY SSH_AUTH_SOCK
+fi
+
+setxkbmap -model pc105 -layout "us,ir" -option "grp:alt_shift_toggle" &
+sxhkd &
+copyq &
+xrdb -load "$HOME/.config/X11/Xresources"
+exec awesome > ~/.awesome-log 2>&1
