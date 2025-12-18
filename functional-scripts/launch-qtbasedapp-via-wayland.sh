@@ -1,0 +1,1 @@
+exec-once = env QT_QPA_PLATFORM=wayland "$1"
