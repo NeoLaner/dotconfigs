@@ -16,8 +16,12 @@ alias editconfig="code $HOME/.config"
 
 pr() { pnpm run "$@"; }
 pi() { pnpm install "$@"; }
+prd() { pnpm run dev "$@"; }
 prc() { pnpm run check "$@"; }
 prb() { pnpm run build "$@"; }
+
+# systemctls
+docker:up() { systemctl start docker; }
 
 
 function prepend_path() {
