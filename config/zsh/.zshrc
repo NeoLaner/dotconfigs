@@ -10,9 +10,9 @@ autoload -U colors && colors
 # Set the prompt using the built-in color variables
 export PS1="%{$fg[yellow]%}%1\~ $ %{$reset_color%}"
 
-alias zshrc="$EDITOR $HOME/.zshrc"
-alias reload="source $HOME/.zshrc"
-alias editconfig="code $HOME/.config"
+alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
+alias reload="source $HOME/.config/zsh/.zshrc"
+alias editconfig="code $HOME/.config/zsh/.config"
 
 pr() { pnpm run "$@"; }
 pi() { pnpm install "$@"; }
@@ -32,3 +32,7 @@ function prepend_path() {
 }
 
 prepend_path "$HOME/.local/bin"
+# Add the main folder and all subfolders to PATH
+if [ -d "/home/neo/dev/linux/dotconfigs/functional-scripts" ]; then
+    export PATH="$PATH:$(find /home/neo/dev/linux/dotconfigs/functional-scripts -type d | tr '\n' ':' | sed 's/:$//')"
+fi
