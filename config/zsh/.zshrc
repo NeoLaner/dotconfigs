@@ -10,9 +10,35 @@ export HISTFILE="$HOME/.config/zsh/history"
 export EDITOR="nvim"
 
 # ==============================================================================
+# KEYBINDINGS (VI MODE - FIXED BACKSPACE)
+# ==============================================================================
+bindkey -v
+export KEYTIMEOUT=1 
+
+# 1. Fix Standard Backspace (Ensures it only deletes ONE character)
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+
+# 2. Ctrl+Backspace (Deletes WHOLE word)
+# Different terminals send different codes for Ctrl+Backspace. 
+# \C-w is the unix standard for "word rubout"
+bindkey '^[[3;5~' backward-kill-word # Common Linux code
+bindkey '^W' backward-kill-word      # Traditional Unix code
+bindkey '^H' backward-delete-char    # Re-enforcing standard backspace
+
+# 3. Navigation & Undo
+bindkey '^z' undo
+bindkey '^[[1;5D' backward-word      # Ctrl+Left
+bindkey '^[[1;5C' forward-word       # Ctrl+Right
+bindkey '^[[3;5~' kill-word          # Ctrl+Delete (Forward)
+
+# 4. Global Shortcuts (Emacs-style behavior in Insert mode)
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
+# ==============================================================================
 # MODULES & OPTIONS
 # ==============================================================================
-# Load modules for colors and git info
 autoload -U colors && colors
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
@@ -24,7 +50,6 @@ alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
 alias reload="source $HOME/.config/zsh/.zshrc"
 alias editconfig="code $HOME/.config/zsh/.config"
 
-# PNPM shortcuts
 alias pr="pnpm run"
 alias pi="pnpm install"
 alias prd="pnpm run dev"
@@ -55,18 +80,12 @@ fi
 # ==============================================================================
 precmd() { vcs_info }
 
-# Git Design
-#  (Branch icon) |  (Small solid dot)
 zstyle ':vcs_info:git:*' formats ' %F{242}on%f %F{cyan} %b%f%u%c'
 zstyle ':vcs_info:git:*' actionformats ' %F{242}on%f %F{cyan} %b%f|%F{red}%a%f%u%c'
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
 
-# Status Dots
-zstyle ':vcs_info:git:*' unstagedstr ' %F{red}%f'  # Red dot for modified files
-zstyle ':vcs_info:git:*' stagedstr ' %F{green}%f'    # Green dot for staged files
+zstyle ':vcs_info:git:*' unstagedstr ' %F{red}%f' 
+zstyle ':vcs_info:git:*' stagedstr ' %F{green}%f'
 
-# --- THE PROMPT ---
-#  (Folder) | ❯ (Chevron)
-# Uses %B for Bold on the directory name
 export PS1='%F{blue} %B%F{white}%1~%f%b${vcs_info_msg_0_} %F{yellow}❯%f '
