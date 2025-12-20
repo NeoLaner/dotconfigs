@@ -8,12 +8,10 @@
   "disk": {
     "format": "󰋊 {percentage_used}%" 
   },
-  "temperature": {
-    "format": "{icon} {temperatureC}°C" 
-  },
+
 
   "group/hardware": {
     "orientation": "horizontal",
-    "modules": ["cpu", "memory", "disk", "temperature"] 
+    "modules": ["cpu", "memory", "disk"]
   }
 }

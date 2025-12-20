@@ -29,6 +29,6 @@
 
   "group/media": {
     "orientation": "horizontal",
-    "modules": ["pulseaudio", "pulseaudio#mic"]
+    "modules": ["pulseaudio"]
   }
 }
