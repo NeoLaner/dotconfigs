@@ -8,7 +8,8 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE="$HOME/.config/zsh/history"
 export EDITOR="nvim"
-
+LD_LIBRARY_PATH=/usr/local/pgsql/lib
+export LD_LIBRARY_PATH
 # ==============================================================================
 # KEYBINDINGS (VI MODE - FIXED BACKSPACE)
 # ==============================================================================
@@ -68,11 +69,20 @@ prepend_path() {
 # ==============================================================================
 # PATH CONFIGURATION
 # ==============================================================================
+# User-specific executable directories
 prepend_path "$HOME/.local/bin"
 
+# PostgreSQL binaries (manually compiled)
+prepend_path "/usr/local/pgsql/bin"
+
+# Include all subdirectories of a custom scripts directory to PATH
+# This appends paths, giving them lower precedence than prepended paths.
 SCRIPT_DIR="/home/neo/dev/linux/dotconfigs/functional-scripts"
 if [ -d "$SCRIPT_DIR" ]; then
-    export PATH="$PATH:$(find "$SCRIPT_DIR" -type d | tr '\n' ':' | sed 's/:$//')"
+  # Use an array to handle spaces in directory names if necessary, though `find` output typically doesn't have issues.
+  # For simplicity with tr/sed, we'll assume no spaces in dir names.
+  # This appends all found directories.
+  export PATH="$PATH:$(find "$SCRIPT_DIR" -type d | tr '\n' ':' | sed 's/:$//')"
 fi
 
 # ==============================================================================
