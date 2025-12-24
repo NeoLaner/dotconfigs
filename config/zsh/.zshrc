@@ -10,6 +10,7 @@ export HISTFILE="$HOME/.config/zsh/history"
 export EDITOR="nvim"
 LD_LIBRARY_PATH=/usr/local/pgsql/lib
 export LD_LIBRARY_PATH
+export QT_QPA_PLATFORMTHEME=qt6ct
 # ==============================================================================
 # KEYBINDINGS (VI MODE - FIXED BACKSPACE)
 # ==============================================================================
