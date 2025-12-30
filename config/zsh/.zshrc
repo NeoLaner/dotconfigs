@@ -48,23 +48,42 @@ setopt PROMPT_SUBST
 # ==============================================================================
 # ALIASES & FUNCTIONS
 # ==============================================================================
+
+# --- File/Config Editing ---
 alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
 alias reload="source $HOME/.config/zsh/.zshrc"
-alias editconfig="code $HOME/.config/zsh/.config"
+alias editmyzshconfig="code $HOME/.config/zsh/.config" # Note: this opens a folder, not a file.
 
-alias pr="pnpm run"
-alias pi="pnpm install"
+# --- pnpm Functions (for commands with arguments) ---
+p() {
+    pnpm "$@"
+}
+pr() {
+    pnpm run "$@"
+}
+pi() {
+    pnpm install "$@"
+}
+
+# --- pnpm Aliases (for commands WITHOUT arguments) ---
 alias prd="pnpm run dev"
 alias prc="pnpm run check"
 alias prb="pnpm run build"
+alias ptd="pnpm tauri dev"
 
-docker_up() { sudo systemctl start docker; }
-docker_down() { sudo systemctl stop docker; }
+# --- System/Service Controls ---
+dockerup() { 
+    sudo systemctl start docker 
+}
+dockerdown() { 
+    sudo systemctl stop docker 
+}
 
+# --- PATH Helper Function ---
 prepend_path() {
-  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-    export PATH="$1:$PATH"
-  fi
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1:$PATH"
+    fi
 }
 
 # ==============================================================================
@@ -100,3 +119,8 @@ zstyle ':vcs_info:git:*' unstagedstr ' %F{red}%f'
 zstyle ':vcs_info:git:*' stagedstr ' %F{green}%f'
 
 export PS1='%F{blue} %B%F{white}%1~%f%b${vcs_info_msg_0_} %F{yellow}❯%f '
+
+# ==============================================================================
+# EXECUTIONS
+# ==============================================================================
+eval "$(direnv hook zsh)"
