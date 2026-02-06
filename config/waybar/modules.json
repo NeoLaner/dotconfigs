@@ -76,17 +76,19 @@
     }
   },
 
-  "hyprland/language": {
-    "format": " {short}",
-    "format-en": "EN",
-    "format-fa": "FA"
-  },
-
   "network": {
     "interval": 2,
     "format-wifi": " {bandwidthDownBytes} 󰇚 {bandwidthUpBytes} 󰕒",
     "format-ethernet": "󰈀 {bandwidthDownBytes} 󰇚 {bandwidthUpBytes} 󰕒",
     "format-disconnected": "󰲛",
     "on-click": "nm-connection-editor"
+  },
+
+ "hyprland/language": {
+    "format": "{short}",
+    "format-us": "EN",
+    "format-ir": "FA",
+    "keyboard-name": "sonix-usb-keyboard",
+    "on-click": "hyprctl switchxkblayout current next"
   }
 }

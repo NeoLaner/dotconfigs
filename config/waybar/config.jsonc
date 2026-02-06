@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 24, 
+  "height": 24,
   "spacing": 4,
   "mode": "dock",
   "reload_style_on_change": true,
@@ -13,8 +13,8 @@
   ],
   "modules-left": [
     "custom/exit",
-    "group/tray-drawer",
-    "group/quicklinks",
+    "tray",
+    // "group/quicklinks",
     "hyprland/window"
   ],
   "modules-center": [
@@ -27,17 +27,5 @@
     "hyprland/language",
     "clock",
     "custom/notification"
-  ],
-  "group/tray-drawer": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "tray-child",
-      "transition-left-to-right": true
-    },
-    "modules": [
-      "custom/tray-icon",
-      "tray"
-    ]
-  }
+  ]
 }
