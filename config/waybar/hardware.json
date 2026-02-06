@@ -1,17 +1,13 @@
 {
-  "cpu": {
-    "format": " {usage}%" 
-  },
   "memory": {
-    "format": " {}%"    
+    "format": " {}%"
   },
   "disk": {
-    "format": "󰋊 {percentage_used}%" 
+    "format": "󰋊 {percentage_used}%"
   },
-
 
   "group/hardware": {
     "orientation": "horizontal",
-    "modules": ["cpu", "memory", "disk"]
+    "modules": ["memory", "disk"]
   }
 }
