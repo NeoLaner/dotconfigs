@@ -48,7 +48,7 @@
   },
 
   "custom/tray-icon": {
-    "format": "󱊖", 
+    "format": "󱊖",
     "tooltip": false
   },
 
@@ -84,11 +84,20 @@
     "on-click": "nm-connection-editor"
   },
 
- "hyprland/language": {
+  "hyprland/language": {
     "format": "{short}",
     "format-us": "EN",
     "format-ir": "FA",
     "keyboard-name": "sonix-usb-keyboard",
     "on-click": "hyprctl switchxkblayout current next"
+  },
+
+  "custom/recorder": {
+    "format": "{}",
+    "interval": "once",
+    "exec": "echo '󰑋'",
+    "exec-if": "pgrep wf-recorder",
+    "signal": 8,
+    "tooltip": false
   }
 }
