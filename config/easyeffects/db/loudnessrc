@@ -1,4 +1,5 @@
 [soe][Loudness#0]
+clipping=true
 iirApproximation=4
 mode=1
 volume=7
